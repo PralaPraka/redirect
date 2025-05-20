@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionamento</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    a { display: block; margin: 15px 0; font-size: 18px; }
+  </style>
+  <script>
+    window.onload = function () {
+      const ua = navigator.userAgent.toLowerCase();
+      const isAndroid = /android|miuibrowser|xiaomi/.test(ua);
+      const isIOS = /iphone|ipad|ipod/.test(ua);
+
+      if (isAndroid) {
+        window.location.href = 'https://play.google.com/store/apps/details?id=xpss.pralapraka';
+      } else if (isIOS) {
+        window.location.href = 'https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462';
+      }
+    };
+  </script>
+</head>
+<body>
+  <h2>Sistema não reconhecido</h2>
+  <p>Toque no botão correspondente ao seu celular:</p>
+  <a href="https://play.google.com/store/apps/details?id=xpss.pralapraka">👉 Android</a>
+  <a href="https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462">🍎 iOS (iPhone)</a>
+</body>
+</html>
