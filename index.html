@@ -7,28 +7,36 @@
   <meta http-equiv="Expires" content="0">
   <title>Redirecionamento</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; text-align: center; }
-    a { display: block; margin: 15px 0; font-size: 18px; }
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      display: none; /* Página inicialmente oculta */
+    }
   </style>
   <script>
     window.onload = function () {
-      // Evita que a página de redirecionamento seja registrada no histórico
+      // Exibe o conteúdo após a lógica do redirecionamento ser decidida
+      const body = document.body;
+      body.style.display = 'block';  // Mostra a página após a execução do JS
+
+      // Substitui a página atual no histórico para evitar que o usuário possa voltar
       history.replaceState(null, '', location.href);
 
       const ua = navigator.userAgent.toLowerCase();
       const isAndroid = /android|miuibrowser|xiaomi/.test(ua);
       const isIOS = /iphone|ipad|ipod/.test(ua);
 
-      // Se for Android, redireciona
+      // Se for Android, redireciona para a Google Play
       if (isAndroid) {
         location.replace('https://play.google.com/store/apps/details?id=xpss.pralapraka');
       } 
-      // Se for iOS, redireciona
+      // Se for iOS, redireciona para a App Store
       else if (isIOS) {
         location.replace('https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462');
       } 
-      // Caso o sistema não seja reconhecido, exibe os links de escolha
+      // Se o dispositivo não for reconhecido, exibe links para escolha manual
       else {
+        // Modifica o conteúdo do body com os links após a execução do redirecionamento
         setTimeout(function() {
           document.body.innerHTML = `
             <h2>Sistema não reconhecido</h2>
@@ -42,9 +50,6 @@
   </script>
 </head>
 <body>
-  <h2>Redirecionando...</h2>
-  <p>Se o redirecionamento não acontecer automaticamente, clique nos links abaixo:</p>
-  <a href="https://play.google.com/store/apps/details?id=xpss.pralapraka">👉 Android</a>
-  <a href="https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462">🍎 iOS (iPhone)</a>
+  <!-- O conteúdo da página será escondido inicialmente e só aparecerá depois da execução do JavaScript -->
 </body>
 </html>
