@@ -19,19 +19,24 @@
       const isAndroid = /android|miuibrowser|xiaomi/.test(ua);
       const isIOS = /iphone|ipad|ipod/.test(ua);
 
-      // Redireciona para a URL correspondente, dependendo do sistema operacional
+      // Se for Android, redireciona
       if (isAndroid) {
         location.replace('https://play.google.com/store/apps/details?id=xpss.pralapraka');
-      } else if (isIOS) {
+      } 
+      // Se for iOS, redireciona
+      else if (isIOS) {
         location.replace('https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462');
-      } else {
-        // Caso o sistema não seja detectado, exibe links para Android e iOS
-        document.body.innerHTML = `
-          <h2>Sistema não reconhecido</h2>
-          <p>Toque no botão correspondente ao seu celular:</p>
-          <a href="https://play.google.com/store/apps/details?id=xpss.pralapraka">👉 Android</a>
-          <a href="https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462">🍎 iOS (iPhone)</a>
-        `;
+      } 
+      // Caso o sistema não seja reconhecido, exibe os links de escolha
+      else {
+        setTimeout(function() {
+          document.body.innerHTML = `
+            <h2>Sistema não reconhecido</h2>
+            <p>Toque no botão correspondente ao seu celular:</p>
+            <a href="https://play.google.com/store/apps/details?id=xpss.pralapraka">👉 Android</a>
+            <a href="https://apps.apple.com/br/app/pra-la-pra-ka-passageiros/id6745391462">🍎 iOS (iPhone)</a>
+          `;
+        }, 100);
       }
     };
   </script>
